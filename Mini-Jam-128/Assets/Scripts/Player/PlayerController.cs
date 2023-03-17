@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Forces
-    [SerializeField] private float upSpeed = 5f;
-    [SerializeField] private float sideSpeed = 5f;
+    [SerializeField] private float upSpeed = 0.0f;
+    [SerializeField] private float sideSpeed = 0.0f;
 
     // Animation
     [SerializeField] private bool isTilted = false;
     [SerializeField] private float tiltAngle = 10.0f;
     [SerializeField] private float tiltSpeed = 0.1f;
+    
+    [SerializeField] private bool isPlayingIntro = false;
+    private float introTime = 0.0f;
+
 
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Obstacle"))
@@ -27,26 +31,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Intro"))
+        {
+            Debug.Log("Escaped Intro");
+            EndIntroTubeAnimation();
+        }
+    }
+
     void Update() {
 
-        if(InGameManager.instance.GetShields() <= 0)
+        if (isPlayingIntro)
         {
-          Debug.Log("No shields");
-            OnDie();
+            UpdateIntroTubeAnimation();
+        } 
+        else
+        {
+            if(InGameManager.instance.GetShields() <= 0)
+            {
+              Debug.Log("No shields");
+                OnDie();
+            }
         }
 
+
         AutoMoveUp();
-        HandleMovement();
-        SmoothTilt();  
+
+        if (InGameManager.instance.IsGameStarted()){
+            HandleMovement();
+            SmoothTilt(); 
+        }
+         
     }
 
     void HandleMovement()
-    {
-        // Movement
-        // if (Input.GetKey(KeyCode.W))
-        // {
-        //     transform.position += Vector3.up * upSpeed * Time.deltaTime;
-        // }
+    {       
         if (Input.GetKey(KeyCode.S))
         {
             transform.position += Vector3.down * upSpeed * Time.deltaTime;
@@ -88,5 +107,37 @@ public class PlayerController : MonoBehaviour
         // Trigger Animation/Particle Effect
         // Trigger Sound Effect
         Destroy(gameObject);
+    }
+
+    void UpdateIntroTubeAnimation()
+    {
+        introTime += Time.deltaTime;
+        if (introTime < 2.0f)
+        {
+            // upSpeed = Mathf.Lerp(0.0f, 10.0f, introTime);
+        }
+        if (introTime > 2.0f && introTime < 4.0f)
+        {
+            upSpeed = Mathf.Lerp(0.0f, 30.0f, introTime - 2.0f);
+        }
+    }
+
+    public void SetUpSpeed(float speed)
+    {
+        upSpeed = speed;
+    }
+
+    public void LaunchTubeAnimation()
+    {
+        Debug.Log("LaunchTubeAnimation");
+        isPlayingIntro = true;
+        upSpeed = 0.0f;
+    }
+
+    public void EndIntroTubeAnimation()
+    {
+        upSpeed = 30.0f;
+        isPlayingIntro = false;
+        InGameManager.instance.StartGame();
     }
 }
