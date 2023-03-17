@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1419420419379453554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.24792533, y: 0.24792533, z: 0.24792533}
+  m_LocalScale: {x: 0.17780213, y: 0.17780213, z: 0.17780213}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 460254436977345604}
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b61c224fdb34c3b9bdcce90906b419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upSpeed: 5
-  sideSpeed: 5
+  upSpeed: 30
+  sideSpeed: 0
   isTilted: 0
   tiltAngle: 0
   tiltSpeed: 0
