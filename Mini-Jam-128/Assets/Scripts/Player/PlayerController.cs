@@ -8,8 +8,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float upSpeed = 5f;
     [SerializeField] private float sideSpeed = 5f;
 
+    // Animation
+    [SerializeField] private bool isTilted = false;
+    [SerializeField] private float tiltAngle = 10.0f;
+    [SerializeField] private float tiltSpeed = 0.1f;
+
     void Update() {
         HandleMovement();
+        SmoothTilt();
         AutoMoveUp();
     }
 
@@ -34,7 +40,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void AutoMoveUp() {
+    void AutoMoveUp()
+    {
         transform.position += Vector3.up * upSpeed * Time.deltaTime;
+    }
+
+    void SmoothTilt()
+    {
+        // Tilt
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, tiltAngle), tiltSpeed);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -tiltAngle), tiltSpeed);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), tiltSpeed);
+        }
     }
 }
