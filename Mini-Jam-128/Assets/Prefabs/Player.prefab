@@ -47,6 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upSpeed: 5
   sideSpeed: 5
+  isTilted: 0
+  tiltAngle: 20
+  tiltSpeed: 0.1
 --- !u!1001 &2225959210787979758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +103,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5635006811332029028, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.009780884
+      objectReference: {fileID: 0}
+    - target: {fileID: -5635006811332029028, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5635006811332029028, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4742743675641043135, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.009780884
+      objectReference: {fileID: 0}
+    - target: {fileID: -4742743675641043135, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4742743675641043135, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2525189132831352112, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: -2525189132831352112, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.022641469
+      objectReference: {fileID: 0}
+    - target: {fileID: -2525189132831352112, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359103177601667974, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359103177601667974, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.03481388
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359103177601667974, guid: ae2c2ae1dccf5b64082ac41b322e0af2, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
