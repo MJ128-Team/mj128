@@ -7,6 +7,7 @@ public class InGameManager : MonoBehaviour
     public static InGameManager instance;
 
     private GameObject player;
+    private PlayerController pc;
     // Stats
     [SerializeField] private int shields = 3;
     [SerializeField] private float power = 3.0f; // in seconds
@@ -14,7 +15,8 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private float gameTime = 0;
 
     // Other
-    [SerializeField] private bool isGameStarted = true; // Maybe there is no need for this
+    [SerializeField] private bool isPlayingIntro = true;
+    [SerializeField] private bool isGameStarted = false;
 
     void Awake()
     {
@@ -39,6 +41,10 @@ public class InGameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        pc = player.GetComponent<PlayerController>();
+
+        // Lauch tube animation
+        pc.LaunchTubeAnimation();
     }
 
     void Update()
@@ -110,5 +116,11 @@ public class InGameManager : MonoBehaviour
     public bool IsGameStarted()
     {
         return isGameStarted;
+    }
+
+    public void StartGame()
+    {
+        isPlayingIntro = false;
+        isGameStarted = true;
     }
 }

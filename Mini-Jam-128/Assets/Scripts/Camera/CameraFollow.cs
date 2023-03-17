@@ -14,7 +14,8 @@ public class CameraFollow : MonoBehaviour
     }
 
     void LateUpdate() {
-      if(InGameManager.instance.IsGameStarted())
+      // if(InGameManager.instance.IsGameStarted() || InGameManager.instance.IsPlayingIntro() )
+      if( player != null )
       {
         Vector3 finalPosition = player.position + offset;
         finalPosition.x = transform.position.x;

@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b61c224fdb34c3b9bdcce90906b419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upSpeed: 30
+  upSpeed: 0
   sideSpeed: 0
   isTilted: 0
   tiltAngle: 0
   tiltSpeed: 0
+  isPlayingIntro: 0
 --- !u!50 &1847241028331138372
 Rigidbody2D:
   serializedVersion: 4
