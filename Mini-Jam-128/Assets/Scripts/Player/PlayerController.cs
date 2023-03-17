@@ -28,9 +28,16 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update() {
-        HandleMovement();
-        SmoothTilt();
+
+        if(InGameManager.instance.GetShields() <= 0)
+        {
+          Debug.Log("No shields");
+            OnDie();
+        }
+
         AutoMoveUp();
+        HandleMovement();
+        SmoothTilt();  
     }
 
     void HandleMovement()
@@ -74,5 +81,12 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), tiltSpeed);
         }
+    }
+
+    void OnDie()
+    {
+        // Trigger Animation/Particle Effect
+        // Trigger Sound Effect
+        Destroy(gameObject);
     }
 }
