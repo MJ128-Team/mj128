@@ -87,6 +87,11 @@ public class InGameManager : MonoBehaviour
         power += amount;
     }
 
+    public float GetShields()
+    {
+        return shields;
+    }
+
     public void IncreaseShields()
     {
         shields++;
