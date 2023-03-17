@@ -96,4 +96,9 @@ public class InGameManager : MonoBehaviour
     {
         shields--;
     }
+
+    public void InstaDeath()
+    {
+        shields = 0;
+    }
 }
