@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9108792782292184848, guid: 90cafc0ecbd1040b1b47f58f1aaf1c09, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9108792782292184848, guid: 90cafc0ecbd1040b1b47f58f1aaf1c09, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9108792782292184848, guid: 90cafc0ecbd1040b1b47f58f1aaf1c09, type: 3}
       propertyPath: m_Color.r
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9108792782292184851, guid: 90cafc0ecbd1040b1b47f58f1aaf1c09, type: 3}
       propertyPath: m_Name
-      value: TestObstacle (1)
+      value: TestObstacle_Deadly (1) Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cafc0ecbd1040b1b47f58f1aaf1c09, type: 3}
