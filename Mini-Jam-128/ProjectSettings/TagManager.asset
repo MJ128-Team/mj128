@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectable
   - Obstacle
+  - Intro
   layers:
   - Default
   - TransparentFX
