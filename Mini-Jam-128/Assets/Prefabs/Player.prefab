@@ -50,7 +50,7 @@ MonoBehaviour:
   upSpeed: 5
   sideSpeed: 5
   isTilted: 0
-  tiltAngle: 20
+  tiltAngle: 5
   tiltSpeed: 0.1
 --- !u!50 &1847241028331138372
 Rigidbody2D:
