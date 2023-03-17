@@ -416,6 +416,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 37487213, guid: c4b7ca096d9394312b01ddac89f1325f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5068462
+      objectReference: {fileID: 0}
+    - target: {fileID: 37487213, guid: c4b7ca096d9394312b01ddac89f1325f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0077
+      objectReference: {fileID: 0}
+    - target: {fileID: 903675028, guid: c4b7ca096d9394312b01ddac89f1325f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0054
+      objectReference: {fileID: 0}
+    - target: {fileID: 903675028, guid: c4b7ca096d9394312b01ddac89f1325f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.3521
+      objectReference: {fileID: 0}
     - target: {fileID: 6178570048259268437, guid: c4b7ca096d9394312b01ddac89f1325f, type: 3}
       propertyPath: m_Name
       value: IntroTube
