@@ -13,6 +13,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float tiltAngle = 10.0f;
     [SerializeField] private float tiltSpeed = 0.1f;
 
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("colision with obstacle");
+            other.gameObject.GetComponent<Obstacle>().OnCrash();
+        }
+        else if (other.gameObject.CompareTag("Collectable"))
+        {
+            // Get Obstacle Controller and call its DoEffect() method
+              InGameManager.instance.IncreasePower(3.0f);
+            Destroy(other.gameObject);
+        }
+    }
+
     void Update() {
         HandleMovement();
         SmoothTilt();
