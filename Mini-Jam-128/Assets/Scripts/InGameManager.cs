@@ -106,4 +106,9 @@ public class InGameManager : MonoBehaviour
     {
         shields = 0;
     }
+
+    public bool IsGameStarted()
+    {
+        return isGameStarted;
+    }
 }

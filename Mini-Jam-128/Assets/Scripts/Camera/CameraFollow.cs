@@ -14,12 +14,16 @@ public class CameraFollow : MonoBehaviour
     }
 
     void LateUpdate() {
+      if(InGameManager.instance.IsGameStarted())
+      {
         Vector3 finalPosition = player.position + offset;
         finalPosition.x = transform.position.x;
         finalPosition.z = transform.position.z;
 
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, finalPosition , smoothFactor);
         transform.position = smoothedPosition;
+      }
+        
     }
 
 
