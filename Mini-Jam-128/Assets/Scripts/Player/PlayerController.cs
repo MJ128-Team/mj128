@@ -77,11 +77,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void HandleMovement()
-    {       
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.down * upSpeed * Time.deltaTime;
-        }
+    {
+        /* if (Input.GetKey(KeyCode.S))
+         {
+             transform.position += Vector3.down * upSpeed * Time.deltaTime;
+         } */
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * sideSpeed * Time.deltaTime;
