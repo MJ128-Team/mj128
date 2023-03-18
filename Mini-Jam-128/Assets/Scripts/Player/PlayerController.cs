@@ -160,6 +160,7 @@ public class PlayerController : MonoBehaviour
     public void LaunchTubeAnimation()
     {
         isPlayingIntro = true;
+        introTime = 0.0f;
         upSpeed = 0.0f;
     }
 
