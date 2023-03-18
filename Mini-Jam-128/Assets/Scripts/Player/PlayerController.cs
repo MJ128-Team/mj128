@@ -16,6 +16,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isPlayingIntro = false;
     private float introTime = 0.0f;
 
+    // Speed Change
+    private bool isChangingSpeed = false;
+    private float changeSpeedTimer = 0.0f;
+    private float changeSpeedDuration = 1.0f;
+    private float targetUpSpeed = 0.0f;
+    private float lastUpSpeed;
+
+    void Start() {
+        upSpeed = 0.0f;
+    }
+
 
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Obstacle"))
@@ -54,7 +65,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
+        HandleSpeedChange();
         AutoMoveUp();
 
         if (InGameManager.instance.IsGameStarted()){
@@ -77,6 +88,24 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * sideSpeed * Time.deltaTime;
+        }
+    }
+
+    void HandleSpeedChange()
+    { 
+        if ( upSpeed != targetUpSpeed)
+        {
+            changeSpeedTimer += Time.deltaTime;
+
+            float speedChangeTransition = changeSpeedTimer / changeSpeedDuration;
+            upSpeed = Mathf.Lerp(lastUpSpeed, targetUpSpeed, speedChangeTransition);
+
+            if(changeSpeedTimer >= changeSpeedDuration)
+            {
+                upSpeed = targetUpSpeed; // Make sure we reach the target value
+                isChangingSpeed = false;
+                changeSpeedTimer = 0.0f;
+            }
         }
     }
 
@@ -114,17 +143,22 @@ public class PlayerController : MonoBehaviour
         introTime += Time.deltaTime;
         if (introTime < 2.0f)
         {
-            // upSpeed = Mathf.Lerp(0.0f, 10.0f, introTime);
+          // Anything?
         }
         if (introTime > 2.0f && introTime < 4.0f)
         {
-            upSpeed = Mathf.Lerp(0.0f, 30.0f, introTime - 2.0f);
+            SetUpSpeed(40.0f, 3.0f);
+            // upSpeed = Mathf.Lerp(0.0f, 30.0f, introTime - 2.0f);
         }
     }
 
-    public void SetUpSpeed(float speed)
+    public void SetUpSpeed(float newValue, float duration)
     {
-        upSpeed = speed;
+        lastUpSpeed = upSpeed;
+        targetUpSpeed = newValue;
+        changeSpeedDuration = duration;
+        changeSpeedTimer = 0.0f;
+        isChangingSpeed = true;
     }
 
     public void LaunchTubeAnimation()
@@ -136,7 +170,9 @@ public class PlayerController : MonoBehaviour
 
     public void EndIntroTubeAnimation()
     {
-        upSpeed = 30.0f;
+      
+        // upSpeed = 30.0f;
+        SetUpSpeed(25.0f, 2.0f);
         isPlayingIntro = false;
         InGameManager.instance.StartGame();
     }
