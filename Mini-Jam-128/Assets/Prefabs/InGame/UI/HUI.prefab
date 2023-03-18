@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7202542645789134740}
   - component: {fileID: 5520867261578394007}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Shields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1545420633342126322}
   - component: {fileID: 8234555979917847597}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 8133230340936112342}
   - component: {fileID: 5165527433555873343}
   - component: {fileID: 2466471474819116420}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 2241206099908576842}
   - component: {fileID: 1834237931750222375}
   - component: {fileID: 1025656917035549971}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 5608351899673273043}
   - component: {fileID: 1127663626473416562}
   - component: {fileID: 1251701665750296522}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
