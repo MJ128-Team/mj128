@@ -55,14 +55,11 @@ public class AsteroidLive : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        //HandleRespawn();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "MainCamera")
         {
-            // Debug.Log("Asteroid entered camera view");
-
             isOutOfView = false;
         }
     }
@@ -70,8 +67,6 @@ public class AsteroidLive : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "MainCamera")
         {
-            // Debug.Log("Asteroid exited camera view");
-
             isOutOfView = true;
             isPassedBy = true;
 
@@ -79,21 +74,36 @@ public class AsteroidLive : MonoBehaviour
         }
     }
 
-    void OnDestroy()
-    {
-        // if(player)
-        // {
-        //     GameObject.Instantiate(gameObject, transform.GetComponentInParent<Transform>()); // Re-instantiate the asteroid
-        // }
-        
-    }
-
-
-    void Spawn() // Spawn the asteroid at a random position before camera
+    void Spawn()
     {   
         RandomSprite();
+        RandomPosition();
+        RandomRotation();
 
-        if (isStatic)
+        isOutOfView = true;
+        isPassedBy = false;
+    }
+
+    void RandomSprite()
+    {
+        if(asteroidSprites.Length > 0)
+        {
+            int randomIndex = Random.Range(0, asteroidSprites.Length);
+            asteroidRenderer.sprite = asteroidSprites[randomIndex];
+
+            asteroidCollider.pathCount = asteroidRenderer.sprite.GetPhysicsShapeCount();
+            List<Vector2> path = new List<Vector2>();
+            for (int i = 0; i < asteroidCollider.pathCount; i++) {
+                path.Clear();
+                asteroidRenderer.sprite.GetPhysicsShape(i, path);
+                asteroidCollider.SetPath(i, path.ToArray());
+            }
+        }
+    }
+
+    void RandomPosition()
+    {
+      if (isStatic)
         {
             spawnPosX = Random.Range(-camWidth, camWidth);
             spawnPosY = Random.Range(-camHeight, camHeight*2);
@@ -123,45 +133,18 @@ public class AsteroidLive : MonoBehaviour
         }
 
         transform.position = new Vector3(spawnPosX, spawnPosY + mainCam.transform.position.y, 0) + spawnOffsetY;
-
-        isOutOfView = true;
-        isPassedBy = false;
     }
 
-    void RandomSprite()
+    void RandomRotation()
     {
-        if(asteroidSprites.Length > 0)
-        {
-            int randomIndex = Random.Range(0, asteroidSprites.Length);
-            asteroidRenderer.sprite = asteroidSprites[randomIndex];
-
-            asteroidCollider.pathCount = asteroidRenderer.sprite.GetPhysicsShapeCount();
-            List<Vector2> path = new List<Vector2>();
-            for (int i = 0; i < asteroidCollider.pathCount; i++) {
-                path.Clear();
-                asteroidRenderer.sprite.GetPhysicsShape(i, path);
-                asteroidCollider.SetPath(i, path.ToArray());
-            }
-        }
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
     }
-
-    //void RandomPosition()
 
     void HandleMovement()
     {
         if(!isStatic)
         {
             transform.Translate(Vector2.left * speed * directionX * Time.deltaTime);
-        }
-    }
-
-    void HandleRespawn()
-    {
-      
-        if(isOutOfView && isPassedBy)
-        {
-            // Debug.Log("Ready to respawn");
-            Spawn();
         }
     }
 }
