@@ -20,6 +20,11 @@ public class InGameManager : MonoBehaviour
     private Transform asteroidField;
     public GameObject asteroidPrefab;
 
+    // Powerups
+    public GameObject powerUpFuelPrefab;
+    [SerializeField] private float fuelPowerUpFreq = 4;
+    private float fuelPowerUpTimer = 0;
+
     // Other
     [SerializeField] private bool isPlayingIntro = true;
     [SerializeField] private bool isGameStarted = false;
@@ -67,6 +72,7 @@ public class InGameManager : MonoBehaviour
         }
 
         HandleAsteroids();
+        HandlePowerUpFuel();
     }
 
     void FixedUpdate()
@@ -103,6 +109,25 @@ public class InGameManager : MonoBehaviour
         }
     }
 
+    void SpawnFuel()
+    {
+        GameObject refill = Instantiate(powerUpFuelPrefab, asteroidField);
+    }
+
+    void HandlePowerUpFuel()
+    {
+        if(isGameStarted){
+            fuelPowerUpTimer -= Time.deltaTime;
+
+            if (fuelPowerUpTimer <= 0)
+            {
+                SpawnFuel();
+                fuelPowerUpTimer = fuelPowerUpFreq;
+            }
+        }
+        
+    }
+
     void HandleAsteroids()
     {
         if (asteroidField.childCount < asteroidsAmmount)
@@ -124,6 +149,10 @@ public class InGameManager : MonoBehaviour
     public void IncreasePower(float amount)
     {
         power += amount;
+        if (power > powerMax)
+        {
+            power = powerMax;
+        }
     }
 
     public float GetShields()
