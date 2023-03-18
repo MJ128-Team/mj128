@@ -448,6 +448,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4141902831113645786, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4141902831752939271, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -536,6 +540,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4141902831882247323, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141902832584573856, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4977786087251971307, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -544,6 +556,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1526012947}
+    - target: {fileID: 7182707691809157987, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
 --- !u!1001 &4754904026407680479
