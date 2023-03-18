@@ -90,7 +90,7 @@ Material:
     - _ClipUvRight: 1
     - _ClipUvUp: 1
     - _ColorChangeLuminosity: 1
-    - _ColorChangeTolerance: 0.25
+    - _ColorChangeTolerance: 0
     - _ColorChangeTolerance2: 0.25
     - _ColorChangeTolerance3: 0.25
     - _ColorRampBlend: 1
