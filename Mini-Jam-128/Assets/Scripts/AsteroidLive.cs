@@ -8,6 +8,8 @@ public class AsteroidLive : MonoBehaviour
     private float camWidth;
     private float camHeight;
 
+    private GameObject player;
+
     [SerializeField] private Vector3 spawnOffsetY = Vector3.zero;
     private float spawnPosX;
     private float spawnPosY;
@@ -23,41 +25,67 @@ public class AsteroidLive : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
         mainCam = Camera.main;
         camHeight = mainCam.orthographicSize;
         camWidth = camHeight * mainCam.aspect;
 
-        Spawn();
+        if(!isStatic)
+        {
+            directionX = Random.Range(0, 2) == 0 ? -1 : 1;
+            speed = Random.Range(0.1f, speed);
+        }
+
+        if(mainCam.transform.position.y > transform.position.y)
+        {
+            Spawn();
+        }
     }
 
     void Update()
     {
         HandleMovement();
-        HandleRespawn();
+        //HandleRespawn();
     }
 
-    // Needd to add a collider (isTrigger) to the camera
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Camera")
+        if(other.gameObject.tag == "MainCamera")
         {
+            Debug.Log("Asteroid entered camera view");
+
             isOutOfView = false;
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.tag == "Camera")
+        if(other.gameObject.tag == "MainCamera")
         {
+            Debug.Log("Asteroid exited camera view");
+
             isOutOfView = true;
             isPassedBy = true;
+
+            Spawn();
         }
     }
+
+    void OnDestroy()
+    {
+        // if(player)
+        // {
+        //     GameObject.Instantiate(gameObject, transform.GetComponentInParent<Transform>()); // Re-instantiate the asteroid
+        // }
+        
+    }
+
 
     void Spawn() // Spawn the asteroid at a random position before camera
     {   
         if (isStatic)
         {
             spawnPosX = Random.Range(-camWidth, camWidth);
-            spawnPosY = Random.Range(-camHeight, camHeight);
+            spawnPosY = Random.Range(-camHeight, camHeight*2);
         }
         else
         {
@@ -80,10 +108,10 @@ public class AsteroidLive : MonoBehaviour
             }
 
             spawnPosX = Random.Range(spawnPosXMin, spawnPosXMax);
-            spawnPosY = Random.Range(spawnPosXMin, spawnPosXMax);
+            spawnPosY = Random.Range(-camHeight, camHeight*2);
         }
 
-        transform.position = new Vector3(spawnPosX, spawnPosY, 0) + spawnOffsetY;
+        transform.position = new Vector3(spawnPosX, spawnPosY + mainCam.transform.position.y, 0) + spawnOffsetY;
 
         isOutOfView = true;
         isPassedBy = false;
@@ -99,8 +127,10 @@ public class AsteroidLive : MonoBehaviour
 
     void HandleRespawn()
     {
+      
         if(isOutOfView && isPassedBy)
         {
+            Debug.Log("Ready to respawn");
             Spawn();
         }
     }
