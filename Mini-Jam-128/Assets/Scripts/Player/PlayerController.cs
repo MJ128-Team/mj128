@@ -78,10 +78,6 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {       
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.down * upSpeed * Time.deltaTime;
-        }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * sideSpeed * Time.deltaTime;
@@ -169,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
     public void EndIntroTubeAnimation()
     {
-        SetUpSpeed(25.0f, 2.0f);
+        SetUpSpeed(10.0f, 2.0f);
         isPlayingIntro = false;
         InGameManager.instance.StartGame();
     }
