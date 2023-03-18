@@ -119,6 +119,15 @@ MonoBehaviour:
   directionX: 0
   isOutOfView: 1
   isPassedBy: 0
+  asteroidSprites:
+  - {fileID: -1761740638, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
+  - {fileID: -2007085553, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
+  - {fileID: 613377037, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
+  - {fileID: 1540987483, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
+  - {fileID: -421106814, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
+  - {fileID: 1602277823, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
+  - {fileID: -667782638, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
+  - {fileID: 1415491754, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
 --- !u!60 &8798900162548602214
 PolygonCollider2D:
   m_ObjectHideFlags: 0
