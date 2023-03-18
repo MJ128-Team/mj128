@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upSpeed: 0
-  sideSpeed: 0
+  sideSpeed: 5
   isTilted: 0
   tiltAngle: 0
   tiltSpeed: 0
