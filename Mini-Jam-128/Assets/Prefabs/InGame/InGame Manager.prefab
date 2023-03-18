@@ -50,12 +50,15 @@ MonoBehaviour:
   powerMax: 15
   gameTime: 0
   level: 0
+  playerPrefab: {fileID: 1419420419379453554, guid: d14ff021c0f2c45f9911e10316ba6cc1, type: 3}
+  initPosition: {fileID: 0}
   asteroidsAmmount: 8
   asteroidPrefab: {fileID: 9047661984168624297, guid: a27ba22db87724547b57dc3dedbbda9e, type: 3}
   powerUpFuelPrefab: {fileID: 3626409723535799665, guid: ba40459a97936447d9c17161b02abfe4, type: 3}
   fuelPowerUpFreq: 3
   isPlayingIntro: 1
   isGameStarted: 0
+  isGameOver: 0
 --- !u!114 &5891615647952221191
 MonoBehaviour:
   m_ObjectHideFlags: 0

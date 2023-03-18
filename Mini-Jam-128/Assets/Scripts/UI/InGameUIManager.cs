@@ -39,4 +39,13 @@ public class InGameUIManager : MonoBehaviour
         onFuelChanged(currentFuel);
       }
     }
+
+    public event Action onGameOver;
+    public void OnGameOver()
+    {
+      if (onGameOver != null)
+      {
+        onGameOver();
+      }
+    }
 }

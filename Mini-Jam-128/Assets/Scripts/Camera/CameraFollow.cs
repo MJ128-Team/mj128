@@ -10,11 +10,10 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").transform; //Should use Tag instead of name
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void LateUpdate() {
-      // if(InGameManager.instance.IsGameStarted() || InGameManager.instance.IsPlayingIntro() )
       if( player != null )
       {
         Vector3 finalPosition = player.position + offset;
@@ -24,8 +23,13 @@ public class CameraFollow : MonoBehaviour
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, finalPosition , smoothFactor);
         transform.position = smoothedPosition;
       }
-        
+      else 
+      {
+        if (InGameManager.instance.IsPlayingIntro())
+        {
+          player = GameObject.FindGameObjectWithTag("Player").transform;
+          //transform.position = player.position + offset;
+        }
+      }   
     }
-
-
 }
