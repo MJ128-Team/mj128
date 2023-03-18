@@ -23,6 +23,10 @@ public class AsteroidLive : MonoBehaviour
     [SerializeField] private bool isOutOfView = true;
     [SerializeField] private bool isPassedBy = false;
 
+    public Sprite[] asteroidSprites;
+    private SpriteRenderer asteroidRenderer;
+    private PolygonCollider2D asteroidCollider;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -30,6 +34,11 @@ public class AsteroidLive : MonoBehaviour
         mainCam = Camera.main;
         camHeight = mainCam.orthographicSize;
         camWidth = camHeight * mainCam.aspect;
+
+        asteroidRenderer = GetComponent<SpriteRenderer>();
+        asteroidCollider = GetComponent<PolygonCollider2D>();
+
+        RandomSprite();
 
         if(!isStatic)
         {
@@ -52,7 +61,7 @@ public class AsteroidLive : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "MainCamera")
         {
-            Debug.Log("Asteroid entered camera view");
+            // Debug.Log("Asteroid entered camera view");
 
             isOutOfView = false;
         }
@@ -61,7 +70,7 @@ public class AsteroidLive : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "MainCamera")
         {
-            Debug.Log("Asteroid exited camera view");
+            // Debug.Log("Asteroid exited camera view");
 
             isOutOfView = true;
             isPassedBy = true;
@@ -82,6 +91,8 @@ public class AsteroidLive : MonoBehaviour
 
     void Spawn() // Spawn the asteroid at a random position before camera
     {   
+        RandomSprite();
+
         if (isStatic)
         {
             spawnPosX = Random.Range(-camWidth, camWidth);
@@ -117,6 +128,25 @@ public class AsteroidLive : MonoBehaviour
         isPassedBy = false;
     }
 
+    void RandomSprite()
+    {
+        if(asteroidSprites.Length > 0)
+        {
+            int randomIndex = Random.Range(0, asteroidSprites.Length);
+            asteroidRenderer.sprite = asteroidSprites[randomIndex];
+
+            asteroidCollider.pathCount = asteroidRenderer.sprite.GetPhysicsShapeCount();
+            List<Vector2> path = new List<Vector2>();
+            for (int i = 0; i < asteroidCollider.pathCount; i++) {
+                path.Clear();
+                asteroidRenderer.sprite.GetPhysicsShape(i, path);
+                asteroidCollider.SetPath(i, path.ToArray());
+            }
+        }
+    }
+
+    //void RandomPosition()
+
     void HandleMovement()
     {
         if(!isStatic)
@@ -130,7 +160,7 @@ public class AsteroidLive : MonoBehaviour
       
         if(isOutOfView && isPassedBy)
         {
-            Debug.Log("Ready to respawn");
+            // Debug.Log("Ready to respawn");
             Spawn();
         }
     }
