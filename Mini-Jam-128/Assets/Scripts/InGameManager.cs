@@ -8,6 +8,7 @@ public class InGameManager : MonoBehaviour
 
     private GameObject player;
     private PlayerController pc;
+
     // Stats
     [SerializeField] private int shields = 3;
     [SerializeField] private float power = 3.0f; // in seconds
@@ -16,6 +17,11 @@ public class InGameManager : MonoBehaviour
 
     // Game State
     [SerializeField] private int level = 0;
+
+    public GameObject playerPrefab;
+    public Transform initPosition;
+    
+    // Asteroids
     [SerializeField] private int asteroidsAmmount = 8;
     private Transform asteroidField;
     public GameObject asteroidPrefab;
@@ -28,6 +34,7 @@ public class InGameManager : MonoBehaviour
     // Other
     [SerializeField] private bool isPlayingIntro = true;
     [SerializeField] private bool isGameStarted = false;
+    [SerializeField] private bool isGameOver = false;
 
     void Awake()
     {
@@ -64,20 +71,25 @@ public class InGameManager : MonoBehaviour
 
     void Update()
     {
-        if(shields <= 0)
+        if(isGameStarted)
         {
-            isGameStarted = false;
-            // Game Over
-            Debug.Log("GAME OVER");
-        }
+          if(shields <= 0 && !isGameOver)
+          {
+              isGameStarted = false;
 
-        HandleAsteroids();
-        HandlePowerUpFuel();
+              Debug.Log("GAME OVER: CRASHED");
+              InGameUIManager.instance.OnGameOver();
+              isGameOver = true;
+          }
+
+          HandleAsteroids();
+          HandlePowerUpFuel();
+        }
     }
 
     void FixedUpdate()
     {
-        if(isGameStarted)
+        if(isGameStarted && !isGameOver)
         {
             gameTime += Time.fixedDeltaTime;
             DrainPower();
@@ -96,6 +108,11 @@ public class InGameManager : MonoBehaviour
             power = 0;
 
             InGameUIManager.instance.OnFuelChanged(power/powerMax);
+            
+            Debug.Log("GAME OVER: NO FUEL");
+            // TODO: Game Over other way
+            InGameUIManager.instance.OnGameOver();
+            isGameOver = true;
         }
         
     }
@@ -116,7 +133,7 @@ public class InGameManager : MonoBehaviour
 
     void HandlePowerUpFuel()
     {
-        if(isGameStarted){
+        if(isGameStarted && !isGameOver){
             fuelPowerUpTimer -= Time.deltaTime;
 
             if (fuelPowerUpTimer <= 0)
@@ -178,6 +195,11 @@ public class InGameManager : MonoBehaviour
         InGameUIManager.instance.OnShieldsChanged(shields);
     }
 
+    public bool IsPlayingIntro()
+    {
+        return isPlayingIntro;
+    }
+
     public bool IsGameStarted()
     {
         return isGameStarted;
@@ -187,5 +209,43 @@ public class InGameManager : MonoBehaviour
     {
         isPlayingIntro = false;
         isGameStarted = true;
+    }
+
+    public void RestartGame()
+    {
+        isGameOver = false;
+        isGameStarted = false;
+        isPlayingIntro = true;
+
+        // Reset Stats
+        shields = 3;
+        power = powerMax;
+        gameTime = 0;
+        level = 0;
+        asteroidsAmmount = 8;
+        fuelPowerUpTimer = 0;
+
+        InGameUIManager.instance.OnShieldsChanged(shields);
+        InGameUIManager.instance.OnFuelChanged(power/powerMax);
+
+        // Reset Player
+        if(!player)
+        {
+            player = Instantiate(playerPrefab, initPosition.position, Quaternion.identity);
+            pc = player.GetComponent<PlayerController>();
+        }
+        else
+        {
+            player.transform.position = initPosition.position;
+            player.transform.rotation = Quaternion.identity;
+        }
+        pc.LaunchTubeAnimation();
+
+        // Reset Asteroids
+        foreach (Transform child in asteroidField)
+        {
+            Destroy(child.gameObject);
+        }
+        SpawnAsteroids();
     }
 }
