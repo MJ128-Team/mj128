@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Escaped Intro");
             EndIntroTubeAnimation();
+
         }
     }
 
@@ -148,7 +149,6 @@ public class PlayerController : MonoBehaviour
         if (introTime > 2.0f && introTime < 4.0f)
         {
             SetUpSpeed(40.0f, 2.0f);
-            // upSpeed = Mathf.Lerp(0.0f, 30.0f, introTime - 2.0f);
         }
     }
 
@@ -163,15 +163,12 @@ public class PlayerController : MonoBehaviour
 
     public void LaunchTubeAnimation()
     {
-        Debug.Log("LaunchTubeAnimation");
         isPlayingIntro = true;
         upSpeed = 0.0f;
     }
 
     public void EndIntroTubeAnimation()
     {
-
-        // upSpeed = 30.0f;
         SetUpSpeed(25.0f, 2.0f);
         isPlayingIntro = false;
         InGameManager.instance.StartGame();
