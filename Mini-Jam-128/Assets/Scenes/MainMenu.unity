@@ -340,6 +340,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1136830034866089123, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136830034866089123, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -126
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141902831752939269, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141902831752939269, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141902831752939269, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 900
+      objectReference: {fileID: 0}
     - target: {fileID: 4141902831752939271, guid: 2025386b88a474d6488c098409ecbcdf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
