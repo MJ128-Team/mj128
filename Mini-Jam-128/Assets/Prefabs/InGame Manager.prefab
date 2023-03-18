@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4498866576454321906}
   - component: {fileID: 1885124113913779497}
+  - component: {fileID: 5891615647952221191}
   m_Layer: 0
   m_Name: InGame Manager
   m_TagString: Untagged
@@ -53,3 +54,15 @@ MonoBehaviour:
   asteroidPrefab: {fileID: 9047661984168624297, guid: a27ba22db87724547b57dc3dedbbda9e, type: 3}
   isPlayingIntro: 1
   isGameStarted: 0
+--- !u!114 &5891615647952221191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510341059176978148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d341944d6ac3a4a66a898785eee14a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

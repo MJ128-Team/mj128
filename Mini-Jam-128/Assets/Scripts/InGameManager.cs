@@ -83,11 +83,15 @@ public class InGameManager : MonoBehaviour
         if( power > 0)
         {
             power -= Time.fixedDeltaTime;
+            InGameUIManager.instance.OnFuelChanged(power/powerMax);
         } 
         else if( power < 0)
         {
             power = 0;
+
+            InGameUIManager.instance.OnFuelChanged(power/powerMax);
         }
+        
     }
 
     void SpawnAsteroids(int currentAmmount = 0)
@@ -130,16 +134,19 @@ public class InGameManager : MonoBehaviour
     public void IncreaseShields()
     {
         shields++;
+        InGameUIManager.instance.OnShieldsChanged(shields);
     }
 
     public void DecreaseShields()
     {
         shields--;
+        InGameUIManager.instance.OnShieldsChanged(shields);
     }
 
     public void InstaDeath()
     {
         shields = 0;
+        InGameUIManager.instance.OnShieldsChanged(shields);
     }
 
     public bool IsGameStarted()
