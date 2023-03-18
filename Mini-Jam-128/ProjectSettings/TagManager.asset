@@ -7,6 +7,7 @@ TagManager:
   - Collectable
   - Obstacle
   - Intro
+  - AsteroidField
   layers:
   - Default
   - TransparentFX

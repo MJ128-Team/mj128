@@ -44,3 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a908da7b315424aba26c0f60f70a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shields: 3
+  power: 3
+  powerMax: 3
+  gameTime: 0
+  level: 0
+  asteroidsAmmount: 8
+  asteroidPrefab: {fileID: 9047661984168624297, guid: a27ba22db87724547b57dc3dedbbda9e, type: 3}
+  isPlayingIntro: 1
+  isGameStarted: 0

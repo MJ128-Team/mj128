@@ -14,6 +14,12 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private float powerMax = 3.0f;
     [SerializeField] private float gameTime = 0;
 
+    // Game State
+    [SerializeField] private int level = 0;
+    [SerializeField] private int asteroidsAmmount = 8;
+    private Transform asteroidField;
+    public GameObject asteroidPrefab;
+
     // Other
     [SerializeField] private bool isPlayingIntro = true;
     [SerializeField] private bool isGameStarted = false;
@@ -45,6 +51,10 @@ public class InGameManager : MonoBehaviour
 
         // Lauch tube animation
         pc.LaunchTubeAnimation();
+
+        // Spawn Asteroid Field
+        asteroidField = GameObject.FindGameObjectWithTag("AsteroidField").transform;
+        SpawnAsteroids();
     }
 
     void Update()
@@ -55,6 +65,8 @@ public class InGameManager : MonoBehaviour
             // Game Over
             Debug.Log("GAME OVER");
         }
+
+        HandleAsteroids();
     }
 
     void FixedUpdate()
@@ -75,6 +87,23 @@ public class InGameManager : MonoBehaviour
         else if( power < 0)
         {
             power = 0;
+        }
+    }
+
+    void SpawnAsteroids(int currentAmmount = 0)
+    {
+        for (int i = currentAmmount; i < asteroidsAmmount; i++)
+        {
+            Vector3 spawnPos = new Vector3(Random.Range(-10, 10), Random.Range(0, 200), 0) + asteroidField.position;
+            GameObject asteroid = Instantiate(asteroidPrefab, spawnPos, Quaternion.identity, asteroidField);
+        }
+    }
+
+    void HandleAsteroids()
+    {
+        if (asteroidField.childCount < asteroidsAmmount)
+        {
+            SpawnAsteroids(asteroidField.childCount);
         }
     }
 
