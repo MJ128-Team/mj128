@@ -30,6 +30,13 @@ public class SceneManager : MonoBehaviour
         }
     }
 
+    // Testing -----
+    // void Start(){ // Remove this
+    //     //AudioManager.instance.PlayMusic();
+    //     TestInGameMusic.instance.PlayLevelMusic();
+    // }
+    // -----
+
     public void LoadMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuName);
@@ -37,6 +44,8 @@ public class SceneManager : MonoBehaviour
 
     public void LoadGame()
     {
+        //AudioManager.instance.PlayMusic();
+        TestInGameMusic.instance.PlayLevelMusic();
         UnityEngine.SceneManagement.SceneManager.LoadScene(inGameName);
     }
 
