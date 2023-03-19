@@ -23,6 +23,8 @@ public class AsteroidLive : MonoBehaviour
     [SerializeField] private bool isOutOfView = true;
     [SerializeField] private bool isPassedBy = false;
 
+    public GameObject explorionPrefab;
+
     public Sprite[] asteroidSprites;
     private SpriteRenderer asteroidRenderer;
     private PolygonCollider2D asteroidCollider;
@@ -55,6 +57,13 @@ public class AsteroidLive : MonoBehaviour
     void Update()
     {
         HandleMovement();
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Player")
+        {
+            GameObject.Instantiate(explorionPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {

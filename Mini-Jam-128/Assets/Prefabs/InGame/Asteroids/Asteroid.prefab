@@ -120,6 +120,7 @@ MonoBehaviour:
   directionX: 0
   isOutOfView: 1
   isPassedBy: 0
+  explorionPrefab: {fileID: 7756294378923308485, guid: e54adb0c0dd82b64d8d442bce28d89cf, type: 3}
   asteroidSprites:
   - {fileID: -1761740638, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
   - {fileID: -2007085553, guid: f37cf9629bd79ae4b9e3886bc348f31d, type: 3}
