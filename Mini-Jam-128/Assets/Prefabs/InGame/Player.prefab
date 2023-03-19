@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upSpeed: 0
   sideSpeed: 10
+  minPosX: 0
+  maxPosX: 0
   isTilted: 0
   tiltAngle: 7
   tiltSpeed: 0.1
@@ -366,8 +368,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.27949363, b: 0, a: 1}
-      maxColor: {r: 1, g: 0.46799785, b: 0, a: 1}
+      minColor: {r: 1, g: 0.5294014, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.38557783, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
