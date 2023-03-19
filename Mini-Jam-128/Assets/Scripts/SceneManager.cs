@@ -111,16 +111,18 @@ public class SceneManager : MonoBehaviour
     {
         panel.SetActive(true);
         anim.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(3f);
+        // yield return new WaitForSeconds(5f); //What if...
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuName);
         panel.SetActive(false); 
+        yield return null;
     }
     IEnumerator LoadInGame()
     {
         panel.SetActive(true);
         anim.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(3f);
+        // yield return new WaitForSeconds(5f);
         UnityEngine.SceneManagement.SceneManager.LoadScene(inGameName);
         panel.SetActive(false);
+        yield return null;
     }
 }
