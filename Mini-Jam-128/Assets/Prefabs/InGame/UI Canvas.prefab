@@ -220,9 +220,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2868819008524759581}
     m_Modifications:
+    - target: {fileID: 166251976829462629, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2688946700707940146, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
       propertyPath: m_Name
       value: Modal Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688946700707940146, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4388014652816556289, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
       propertyPath: m_Pivot.x
