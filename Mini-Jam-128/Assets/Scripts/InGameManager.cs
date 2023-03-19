@@ -137,6 +137,14 @@ public class InGameManager : MonoBehaviour
         }
     }
 
+    void ClearAsteroids()
+    {
+        foreach (Transform child in asteroidField)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     void SpawnFuel()
     {
         GameObject refill = Instantiate(powerUpFuelPrefab, asteroidField);
@@ -251,6 +259,7 @@ public class InGameManager : MonoBehaviour
             player.transform.position = initPosition.position;
             player.transform.rotation = Quaternion.identity;
         }
+        Camera.main.transform.GetComponent<CameraFollow>().MoveToPlayer();
         pc.LaunchTubeAnimation();
 
         // Reset Asteroids
@@ -258,6 +267,8 @@ public class InGameManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        ClearAsteroids();
         SpawnAsteroids();
     }
 }
