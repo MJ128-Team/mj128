@@ -736,24 +736,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGame UI Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1721331081407484107, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2106936686323952688, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123047883266334741, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123047883266334741, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
-      propertyPath: m_Color.g
-      value: 0.92553186
-      objectReference: {fileID: 0}
-    - target: {fileID: 2123047883266334741, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
-      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2831358980176729880, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
@@ -844,10 +828,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4176098257223930839, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189188011135877991, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539453159447292240, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6730452127553694015, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 708634465}
+    - target: {fileID: 6791819771127117229, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00000047684
+      objectReference: {fileID: 0}
     - target: {fileID: 7397961609039563274, guid: 425bab7f3cb6043009bb8210b1db14fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
