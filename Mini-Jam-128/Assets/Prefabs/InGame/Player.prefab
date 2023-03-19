@@ -91,6 +91,7 @@ MonoBehaviour:
   tiltAngle: 7
   tiltSpeed: 0.1
   isPlayingIntro: 0
+  thrusterParticles: {fileID: 5281612368249934214}
   thrustersSource: {fileID: 5778368869853385046}
   startExplosionClip: {fileID: 8300000, guid: 74444318a7b8b4b488dc21c5bc994900, type: 3}
   thrustersClip: {fileID: 0}
@@ -120,7 +121,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &449742970257162182
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

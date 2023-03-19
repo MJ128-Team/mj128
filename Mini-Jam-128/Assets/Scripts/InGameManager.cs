@@ -122,6 +122,10 @@ public class InGameManager : MonoBehaviour
 
             InGameUIManager.instance.OnFuelChanged(power/powerMax);
             
+            pc.SetUpSpeed(0f, 2f);
+            pc.thrusterParticles.Stop();
+            // pc.thrusterParticles.gameObject.SetActive(false);
+            
             HandleGameOver("fuel");
         }
         

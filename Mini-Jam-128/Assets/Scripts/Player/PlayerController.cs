@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Forces
+    private Rigidbody2D rb;
     [SerializeField] private float upSpeed = 0.0f;
     [SerializeField] private float sideSpeed = 0.0f;
     [SerializeField] private float minPosX;
@@ -25,6 +26,9 @@ public class PlayerController : MonoBehaviour
     private float targetUpSpeed = 0.0f;
     private float lastUpSpeed;
 
+    // Particles
+    public ParticleSystem thrusterParticles;
+
     // Audio
     public AudioSource thrustersSource;
     private bool isPlayingThrusters = false;
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Start() {
         upSpeed = 0.0f;
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
@@ -81,8 +86,11 @@ public class PlayerController : MonoBehaviour
         AutoMoveUp();
 
         if (InGameManager.instance.IsGameStarted()){
-            HandleMovement();
-            SmoothTilt(); 
+            if(upSpeed > 0f)
+            {
+                HandleMovement();
+                SmoothTilt(); 
+            }
         }
          
     }
@@ -109,6 +117,7 @@ public class PlayerController : MonoBehaviour
 
             float speedChangeTransition = changeSpeedTimer / changeSpeedDuration;
             upSpeed = Mathf.Lerp(lastUpSpeed, targetUpSpeed, speedChangeTransition);
+            //thrusterParticles.emissionRate = upSpeed * 10f;
 
             if(changeSpeedTimer >= changeSpeedDuration)
             {
@@ -123,6 +132,9 @@ public class PlayerController : MonoBehaviour
     void AutoMoveUp()
     {
         transform.position += Vector3.up * upSpeed * Time.deltaTime;
+        // with rigidbody apply force
+        //rb.AddForce(Vector2.up * upSpeed);
+
     }
 
     void SmoothTilt()
@@ -153,6 +165,8 @@ public class PlayerController : MonoBehaviour
 
         // Trigger Sound Effect
         thrustersSource.Stop();
+        // thrusterParticles.Stop();
+        // thrusterParticles.gameObject.SetActive(false);
 
         Destroy(gameObject);
     }
