@@ -60,11 +60,8 @@ public class InGameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
-        float playerWidth = player.GetComponent<Collider2D>().bounds.size.x;
-        Debug.Log("Player Width: " + playerWidth);
-        float xOffset = Camera.main.orthographicSize * Camera.main.aspect - playerWidth;
-        pc.SetXBoundaries(initPosition.position.x - xOffset, initPosition.position.x + xOffset);
-        // Lauch tube animation
+
+        UpdateMovementXBoundaries();
         pc.LaunchTubeAnimation();
         
 
@@ -72,6 +69,8 @@ public class InGameManager : MonoBehaviour
         asteroidField = GameObject.FindGameObjectWithTag("AsteroidField").transform;
         SpawnAsteroids();
     }
+
+   
 
     void Update()
     {
@@ -119,6 +118,14 @@ public class InGameManager : MonoBehaviour
             isGameOver = true;
         }
         
+    }
+
+    void UpdateMovementXBoundaries()
+    {
+        float playerWidth = player.GetComponent<Collider2D>().bounds.size.x;
+        Debug.Log("Player Width: " + playerWidth);
+        float xOffset = Camera.main.orthographicSize * Camera.main.aspect - playerWidth;
+        pc.SetXBoundaries(initPosition.position.x - xOffset, initPosition.position.x + xOffset);
     }
 
     void SpawnAsteroids(int currentAmmount = 0)
@@ -237,6 +244,7 @@ public class InGameManager : MonoBehaviour
         {
             player = Instantiate(playerPrefab, initPosition.position, Quaternion.identity);
             pc = player.GetComponent<PlayerController>();
+            UpdateMovementXBoundaries();
         }
         else
         {
