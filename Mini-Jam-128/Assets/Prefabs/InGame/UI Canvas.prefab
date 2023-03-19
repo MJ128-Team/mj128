@@ -642,58 +642,6 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 140
       objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_Transition
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 3529923748702879644}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5524843159745768650, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5713609326698729257, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1598.74
@@ -830,11 +778,6 @@ Animator:
 --- !u!224 &2974799243523832239 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 238239230155153263, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
-  m_PrefabInstance: {fileID: 3028382092450031296}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3529923748702879644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1943927236302543196, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
   m_PrefabInstance: {fileID: 3028382092450031296}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5500781290703531662 stripped
