@@ -495,6 +495,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 958695567652336088, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 958695567652336088, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1721331081407484107}
@@ -508,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 958695567652336088, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
+      value: HardResetLevel
       objectReference: {fileID: 0}
     - target: {fileID: 958695567652336088, guid: 55884de45ffe64269b4caf1f0bcfd5ff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

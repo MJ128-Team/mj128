@@ -353,4 +353,9 @@ public class InGameManager : MonoBehaviour
         ClearAsteroids();
         SpawnAsteroids();
     }
+
+    public void HardResetLevel()
+    {
+        SceneManager.instance.LoadGame();
+    }
 }
