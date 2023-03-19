@@ -310,6 +310,11 @@ public class InGameManager : MonoBehaviour
         return isGameStarted;
     }
 
+    public bool IsGameOver()
+    {
+        return isGameOver;
+    }
+
     public void StartGame()
     {
         isPlayingIntro = false;
