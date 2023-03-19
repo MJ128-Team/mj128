@@ -128,8 +128,8 @@ RectTransform:
   m_GameObject: {fileID: 5428661221522235258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4883245942304223740}
   m_RootOrder: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a38f3398d534e9ab536634c81a051b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 0}
   anim: {fileID: 7575852941160872819}
   mainMenuName: MainMenu
   inGameName: InGame
