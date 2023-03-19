@@ -41,5 +41,10 @@ public class TestInGameMusic : MonoBehaviour
     {
         musicSource.Play();
     }
+
+    public void StopLevelMusic()
+    {
+        musicSource.Stop();
+    }
     
 }
