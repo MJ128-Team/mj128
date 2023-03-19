@@ -345,6 +345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a62e4945515445289170b3760b5ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sessionScoreText: {fileID: 8005426375642837152}
+  bestScoreText: {fileID: 5806014392487417780}
+  baseScoreText: 'SCORE - '
+  baseBestScoreText: 'BEST SCORE - '
 --- !u!1 &1955900246092323085
 GameObject:
   m_ObjectHideFlags: 0
