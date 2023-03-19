@@ -174,9 +174,9 @@ public class InGameManager : MonoBehaviour
 
     void HandleLevel()
     {
-        Debug.Log("GAME TIME: "+gameTime);
-        Debug.Log((gameTime % secToNexLevel+1) + " -> " + secToNexLevel);
-        Debug.Log("LEVEL: "+level);
+        // Debug.Log("GAME TIME: "+gameTime);
+        // Debug.Log((gameTime % secToNexLevel+1) + " -> " + secToNexLevel);
+        // Debug.Log("LEVEL: "+level);
 
         if ((gameTime % secToNexLevel+1) > secToNexLevel)
         { 
@@ -203,6 +203,10 @@ public class InGameManager : MonoBehaviour
         //Increase asteroids size
         currentFuelPowerUpFreq -= 0.1f;
 
+        Debug.Log("LEVEL UP: " + level);
+        Debug.Log("ASTEROIDS AMMOUNT: " + currentAsteroidsAmmount);
+        Debug.Log("ASTEROIDS SIZE: " + "TODO")
+        Debug.Log("FUEL POWER UP FREQ: " + currentFuelPowerUpFreq);
     }
 
     void ResetLevel()
