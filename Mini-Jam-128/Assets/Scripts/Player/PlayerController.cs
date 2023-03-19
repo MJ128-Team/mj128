@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
     // Forces
     [SerializeField] private float upSpeed = 0.0f;
     [SerializeField] private float sideSpeed = 0.0f;
-
+    [SerializeField] private float minPosX;
+    [SerializeField] private float maxPosX;
+    
     // Animation
     [SerializeField] private bool isTilted = false;
     [SerializeField] private float tiltAngle = 10.0f;
@@ -31,13 +33,11 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("colision with obstacle");
             other.gameObject.GetComponent<Obstacle>().OnCrash();
         }
         else if (other.gameObject.CompareTag("Collectable"))
         {
-            // Get Obstacle Controller and call its DoEffect() method
-              InGameManager.instance.IncreasePower(3.0f);
+            InGameManager.instance.IncreasePower(3.0f);
             Destroy(other.gameObject);
         }
     }
@@ -45,9 +45,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Intro"))
         {
-            Debug.Log("Escaped Intro");
             EndIntroTubeAnimation();
-
         }
     }
 
@@ -61,7 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             if(InGameManager.instance.GetShields() <= 0)
             {
-              Debug.Log("No shields");
                 OnDie();
             }
         }
@@ -81,10 +78,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * sideSpeed * Time.deltaTime;
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPosX, maxPosX), transform.position.y, transform.position.z);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * sideSpeed * Time.deltaTime;
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPosX, maxPosX), transform.position.y, transform.position.z);
         }
     }
 
@@ -113,12 +112,16 @@ public class PlayerController : MonoBehaviour
 
     void SmoothTilt()
     {
-        // Tilt
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, tiltAngle), tiltSpeed);
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), tiltSpeed);
+        }
+        
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -tiltAngle), tiltSpeed);
         }
@@ -170,4 +173,11 @@ public class PlayerController : MonoBehaviour
         isPlayingIntro = false;
         InGameManager.instance.StartGame();
     }
+
+    public void SetXBoundaries(float posXmin, float posXmax)
+    {
+        minPosX = posXmin;
+        maxPosX = posXmax;
+    }
+
 }

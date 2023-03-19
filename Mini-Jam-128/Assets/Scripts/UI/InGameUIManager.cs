@@ -40,12 +40,12 @@ public class InGameUIManager : MonoBehaviour
       }
     }
 
-    public event Action onGameOver;
-    public void OnGameOver()
+    public event Action<float,float> onGameOver;
+    public void OnGameOver(float current, float best)
     {
       if (onGameOver != null)
       {
-        onGameOver();
+        onGameOver(current, best);
       }
     }
 }
