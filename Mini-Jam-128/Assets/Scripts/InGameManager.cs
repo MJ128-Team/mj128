@@ -14,6 +14,7 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private float power = 3.0f; // in seconds
     [SerializeField] private float powerMax = 3.0f;
     [SerializeField] private float gameTime = 0;
+    [SerializeField] private float gameTimeBest;
 
     // Game State
     [SerializeField] private int level = 0;
@@ -80,9 +81,7 @@ public class InGameManager : MonoBehaviour
           {
               isGameStarted = false;
 
-              Debug.Log("GAME OVER: CRASHED");
-              InGameUIManager.instance.OnGameOver();
-              isGameOver = true;
+              HandleGameOver("crash");
           }
 
           HandleAsteroids();
@@ -112,10 +111,7 @@ public class InGameManager : MonoBehaviour
 
             InGameUIManager.instance.OnFuelChanged(power/powerMax);
             
-            Debug.Log("GAME OVER: NO FUEL");
-            // TODO: Game Over other way
-            InGameUIManager.instance.OnGameOver();
-            isGameOver = true;
+            HandleGameOver("fuel");
         }
         
     }
@@ -169,6 +165,31 @@ public class InGameManager : MonoBehaviour
         if (asteroidField.childCount < asteroidsAmmount)
         {
             SpawnAsteroids(asteroidField.childCount);
+        }
+    }
+
+    void HandleGameOver(string cause)
+    {
+        if(cause == "crash")
+        {
+            Debug.Log("GAME OVER: CRASHED");
+        }
+        else if(cause == "fuel")
+        {
+            Debug.Log("GAME OVER: NO FUEL");
+            // TODO: Game Over other way 
+        }
+
+        HandleBestTime(gameTime);
+        InGameUIManager.instance.OnGameOver(gameTime, gameTimeBest);
+        isGameOver = true; 
+    }
+
+    void HandleBestTime(float gameTime)
+    {
+        if(gameTime > gameTimeBest)
+        {
+            gameTimeBest = gameTime;
         }
     }
 
