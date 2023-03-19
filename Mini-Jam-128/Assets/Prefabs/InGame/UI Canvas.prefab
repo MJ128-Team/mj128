@@ -266,6 +266,34 @@ PrefabInstance:
       propertyPath: m_FontData.m_MinSize
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7695180144369678910, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 164.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695180144369678910, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 129.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695180144369678910, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -14.039978
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695180144369678910, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.6799927
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034966445587169876, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034966445587169876, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034966445587169876, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8288618748899127972, guid: ab15e8599cb8b42959b3ad8535da553f, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -317,7 +345,7 @@ Animator:
   m_GameObject: {fileID: 2447987652191247391}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7cbf565a74a5e7246a06a817148e8230, type: 2}
+  m_Controller: {fileID: 9100000, guid: c859c283a7e53dd4ab61e4986117dc69, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -348,7 +376,7 @@ Animator:
   m_GameObject: {fileID: 3455670484026310612}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f1f0870abccb4146bee892c1210d401, type: 2}
+  m_Controller: {fileID: 9100000, guid: b6af57b673f651e49a34eefde571e42f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
