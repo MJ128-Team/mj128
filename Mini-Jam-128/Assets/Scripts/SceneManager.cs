@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
+    [SerializeField]public GameObject panel;
+    [SerializeField] public Animator anim;
+
     public static SceneManager instance;
 
     [SerializeField] private string mainMenuName = "MainMenu";
@@ -29,10 +32,6 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        HandleBlankingScreen();
-    }
 
     void OnDestroy()
     {
@@ -42,12 +41,9 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-    void OnSceneLoaded()
-    {
-        FadeToClear();
-    }
 
-    void HandleBlankingScreen()
+
+    /*   void HandleBlankingScreen()
     {
         if(isFading)
         {
@@ -71,15 +67,15 @@ public class SceneManager : MonoBehaviour
                 fadeTimer = 0f;
             }
         }
-    }
+        */
 
-    void FadeToBlack()
-    {    
-        float pos = fadeTimer / fadeBlackDuration;
-        float alpha = Mathf.Lerp(pos, 0f, 1f);
-        Debug.Log("Alpha: " + alpha);
-        blankingScreen.color = new Color(0f, 0f, 0f, pos);
-    }
+    /* void FadeToBlack()
+     {    
+         float pos = fadeTimer / fadeBlackDuration;
+         float alpha = Mathf.Lerp(pos, 0f, 1f);
+         Debug.Log("Alpha: " + alpha);
+         blankingScreen.color = new Color(0f, 0f, 0f, pos);
+     }
 
     void FadeToClear()
     {
@@ -87,7 +83,7 @@ public class SceneManager : MonoBehaviour
         float alpha = Mathf.Lerp(pos, 1f, 0f);
         Debug.Log("Alpha: " + alpha);
         blankingScreen.color = new Color(0f, 0f, 0f, pos);
-    }
+    }*/
 
     // Testing -----
     // void Start(){ // Remove this
@@ -98,22 +94,33 @@ public class SceneManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        isFading = true;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuName);
-
+        StartCoroutine(LoadMenu());
     }
 
     public void LoadGame()
     {
-        isFading = true;
-        //AudioManager.instance.PlayMusic();
-        TestInGameMusic.instance.PlayLevelMusic();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(inGameName);
+        StartCoroutine(LoadInGame());
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
-  
+
+    IEnumerator LoadMenu()
+    {
+        panel.SetActive(true);
+        anim.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(3f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuName);
+        panel.SetActive(false); 
+    }
+    IEnumerator LoadInGame()
+    {
+        panel.SetActive(true);
+        anim.SetTrigger("FadeIn");
+        yield return new WaitForSeconds(3f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(inGameName);
+        panel.SetActive(false);
+    }
 }
