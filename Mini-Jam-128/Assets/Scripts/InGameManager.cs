@@ -19,7 +19,6 @@ public class InGameManager : MonoBehaviour
     // Game State
     [SerializeField] private int level = 0;
     [SerializeField] private float secToNexLevel = 3f; // Check also RestetLevel()
-    private float currentFuelPowerUpFreq;
     private bool isLevelUp = false;
 
     public GameObject playerPrefab;
@@ -33,8 +32,9 @@ public class InGameManager : MonoBehaviour
 
     // Powerups
     public GameObject powerUpFuelPrefab;
-    [SerializeField] private float fuelPowerUpFreq = 4;
-    private float fuelPowerUpTimer = 0;
+    [SerializeField] private float fuelPowerUpFreq = 4f;
+    private float currentFuelPowerUpFreq;
+    private float fuelPowerUpTimer = 0f;
 
     // Other
     [SerializeField] private bool isPlayingIntro = true;
@@ -63,6 +63,9 @@ public class InGameManager : MonoBehaviour
 
     void Start()
     {
+        currentAsteroidsAmmount = asteroidsAmmount;
+        currentFuelPowerUpFreq = fuelPowerUpFreq;
+
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
 
@@ -159,14 +162,14 @@ public class InGameManager : MonoBehaviour
             if (fuelPowerUpTimer <= 0)
             {
                 SpawnFuel();
-                fuelPowerUpTimer = fuelPowerUpFreq;
+                fuelPowerUpTimer = currentFuelPowerUpFreq;
             }
         }
     }
 
     void HandleAsteroids()
     {
-        if (asteroidField.childCount < asteroidsAmmount)
+        if (asteroidField.childCount < currentAsteroidsAmmount)
         {
             SpawnAsteroids(asteroidField.childCount);
         }
@@ -205,7 +208,7 @@ public class InGameManager : MonoBehaviour
 
         Debug.Log("LEVEL UP: " + level);
         Debug.Log("ASTEROIDS AMMOUNT: " + currentAsteroidsAmmount);
-        Debug.Log("ASTEROIDS SIZE: " + "TODO")
+        Debug.Log("ASTEROIDS SIZE: " + "TODO");
         Debug.Log("FUEL POWER UP FREQ: " + currentFuelPowerUpFreq);
     }
 
