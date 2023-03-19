@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 9088689060222672445}
   - component: {fileID: 4996002012411447064}
   - component: {fileID: 5524843159745768650}
+  - component: {fileID: 6426320699237294755}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -204,7 +205,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4996002012411447064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6426320699237294755}
+        m_TargetAssemblyTypeName: GameOverMainMenuButton, Assembly-CSharp
+        m_MethodName: ToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6426320699237294755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093752624997590511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ef08217a7e24a80990cd03227adc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814019318667839980
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a62e4945515445289170b3760b5ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sessionScoreText: {fileID: 8005426375642837152}
+  bestScoreText: {fileID: 5806014392487417780}
+  baseScoreText: 'SCORE - '
+  baseBestScoreText: 'BEST SCORE - '
 --- !u!1 &1955900246092323085
 GameObject:
   m_ObjectHideFlags: 0

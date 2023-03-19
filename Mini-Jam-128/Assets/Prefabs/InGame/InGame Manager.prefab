@@ -49,7 +49,9 @@ MonoBehaviour:
   power: 15
   powerMax: 15
   gameTime: 0
+  gameTimeBest: 0
   level: 0
+  secToNexLevel: 3
   playerPrefab: {fileID: 1419420419379453554, guid: d14ff021c0f2c45f9911e10316ba6cc1, type: 3}
   initPosition: {fileID: 0}
   asteroidsAmmount: 8
@@ -59,6 +61,8 @@ MonoBehaviour:
   isPlayingIntro: 1
   isGameStarted: 0
   isGameOver: 0
+  deathCrashClip: {fileID: 8300000, guid: 10aa502909c2f4b84b5dec9ed64418eb, type: 3}
+  deathFuelClip: {fileID: 8300000, guid: 88f3cadaec5f749b4a26323040d68d81, type: 3}
 --- !u!114 &5891615647952221191
 MonoBehaviour:
   m_ObjectHideFlags: 0

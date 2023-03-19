@@ -9,9 +9,7 @@ public class ResizeCamCollider : MonoBehaviour
     [SerializeField] private float sizeOffset = 0;
 
     void Start()
-    {
-        Debug.Log("Camera size: " + Camera.main.orthographicSize);
-        
+    {     
         camCollider = GetComponent<BoxCollider2D>();
         camCollider.size = new Vector2(Camera.main.orthographicSize * Camera.main.aspect * 2, Camera.main.orthographicSize * 2);
         camCollider.size += new Vector2(sizeOffset, sizeOffset);
