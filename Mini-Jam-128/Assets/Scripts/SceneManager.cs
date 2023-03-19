@@ -98,18 +98,14 @@ public class SceneManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        TestInGameMusic.instance.StopLevelMusic();
-
-        //isFading = true;
+        isFading = true;
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuName);
 
     }
 
     public void LoadGame()
     {
-
-        Debug.Log("LoadGame");
-        //isFading = true;
+        isFading = true;
         //AudioManager.instance.PlayMusic();
         TestInGameMusic.instance.PlayLevelMusic();
         UnityEngine.SceneManagement.SceneManager.LoadScene(inGameName);
