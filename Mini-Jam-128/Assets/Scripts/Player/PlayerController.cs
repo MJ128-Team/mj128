@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
     // Forces
     [SerializeField] private float upSpeed = 0.0f;
     [SerializeField] private float sideSpeed = 0.0f;
-
+    [SerializeField] private float minPosX;
+    [SerializeField] private float maxPosX;
+    
     // Animation
     [SerializeField] private bool isTilted = false;
     [SerializeField] private float tiltAngle = 10.0f;
@@ -81,10 +83,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left * sideSpeed * Time.deltaTime;
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPosX, maxPosX), transform.position.y, transform.position.z);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += Vector3.right * sideSpeed * Time.deltaTime;
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPosX, maxPosX), transform.position.y, transform.position.z);
         }
     }
 
@@ -170,4 +174,11 @@ public class PlayerController : MonoBehaviour
         isPlayingIntro = false;
         InGameManager.instance.StartGame();
     }
+
+    public void SetXBoundaries(float posXmin, float posXmax)
+    {
+        minPosX = posXmin;
+        maxPosX = posXmax;
+    }
+
 }

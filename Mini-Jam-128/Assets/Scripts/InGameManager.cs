@@ -60,9 +60,13 @@ public class InGameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
-
+        float playerWidth = player.GetComponent<Collider2D>().bounds.size.x;
+        Debug.Log("Player Width: " + playerWidth);
+        float xOffset = Camera.main.orthographicSize * Camera.main.aspect - playerWidth;
+        pc.SetXBoundaries(initPosition.position.x - xOffset, initPosition.position.x + xOffset);
         // Lauch tube animation
         pc.LaunchTubeAnimation();
+        
 
         // Spawn Asteroid Field
         asteroidField = GameObject.FindGameObjectWithTag("AsteroidField").transform;
