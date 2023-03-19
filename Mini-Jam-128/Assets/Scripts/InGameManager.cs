@@ -41,6 +41,9 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private bool isGameStarted = false;
     [SerializeField] private bool isGameOver = false;
 
+    public AudioClip deathCrashClip;
+    public AudioClip deathFuelClip;
+
     void Awake()
     {
         if (instance == null)
@@ -188,6 +191,10 @@ public class InGameManager : MonoBehaviour
                 isLevelUp = true;
                 IncreaseLevel();
                 // secToNexLevel += 3f;
+                if(level%3 == 2)
+                {
+                    //AudioManager.instance.NextGameMusic();
+                }
             }
         }
         else
@@ -224,11 +231,13 @@ public class InGameManager : MonoBehaviour
     {
         if(cause == "crash")
         {
+            AudioManager.instance.TriggerSfx(deathCrashClip);
             Debug.Log("GAME OVER: CRASHED");
         }
         else if(cause == "fuel")
         {
             Debug.Log("GAME OVER: NO FUEL");
+            AudioManager.instance.TriggerSfx(deathFuelClip);
             // TODO: Game Over other way 
         }
 

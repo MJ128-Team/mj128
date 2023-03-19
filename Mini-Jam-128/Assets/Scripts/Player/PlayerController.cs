@@ -25,6 +25,15 @@ public class PlayerController : MonoBehaviour
     private float targetUpSpeed = 0.0f;
     private float lastUpSpeed;
 
+    // Audio
+    public AudioSource thrustersSource;
+    private bool isPlayingThrusters = false;
+    public AudioClip startExplosionClip;
+    private bool isExplosionPlayed = false;
+    public AudioClip thrustersClip;
+    public AudioClip fuelClip;
+    public List<AudioClip> crashClips;
+
     void Start() {
         upSpeed = 0.0f;
     }
@@ -34,9 +43,14 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             other.gameObject.GetComponent<Obstacle>().OnCrash();
+            // Trigger Crash Sound
+            int randomCrashClip = Random.Range(0, crashClips.Count);
+            AudioManager.instance.TriggerSfx(crashClips[randomCrashClip]);
         }
         else if (other.gameObject.CompareTag("Collectable"))
         {
+            // Trigger Collect Sound
+            AudioManager.instance.TriggerSfx(fuelClip);
             InGameManager.instance.IncreasePower(3.0f);
             Destroy(other.gameObject);
         }
@@ -102,6 +116,7 @@ public class PlayerController : MonoBehaviour
                 isChangingSpeed = false;
                 changeSpeedTimer = 0.0f;
             }
+
         }
     }
 
@@ -134,7 +149,11 @@ public class PlayerController : MonoBehaviour
     void OnDie()
     {
         // Trigger Animation/Particle Effect
+
+
         // Trigger Sound Effect
+        thrustersSource.Stop();
+
         Destroy(gameObject);
     }
 
@@ -146,7 +165,17 @@ public class PlayerController : MonoBehaviour
           // Anything?
         }
         if (introTime > 2.0f && introTime < 4.0f)
-        {
+        {   
+            if (!isExplosionPlayed)
+            {
+                AudioManager.instance.TriggerSfx(startExplosionClip);
+                isExplosionPlayed = true;
+            }
+            if( !thrustersSource.isPlaying)
+            {
+                thrustersSource.Play();
+            }
+
             SetUpSpeed(40.0f, 2.0f);
         }
     }
