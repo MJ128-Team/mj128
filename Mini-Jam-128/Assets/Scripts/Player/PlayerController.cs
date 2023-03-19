@@ -33,13 +33,11 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("colision with obstacle");
             other.gameObject.GetComponent<Obstacle>().OnCrash();
         }
         else if (other.gameObject.CompareTag("Collectable"))
         {
-            // Get Obstacle Controller and call its DoEffect() method
-              InGameManager.instance.IncreasePower(3.0f);
+            InGameManager.instance.IncreasePower(3.0f);
             Destroy(other.gameObject);
         }
     }
@@ -47,9 +45,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Intro"))
         {
-            Debug.Log("Escaped Intro");
             EndIntroTubeAnimation();
-
         }
     }
 
@@ -63,7 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             if(InGameManager.instance.GetShields() <= 0)
             {
-              Debug.Log("No shields");
                 OnDie();
             }
         }
@@ -117,7 +112,6 @@ public class PlayerController : MonoBehaviour
 
     void SmoothTilt()
     {
-        // Tilt
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, tiltAngle), tiltSpeed);

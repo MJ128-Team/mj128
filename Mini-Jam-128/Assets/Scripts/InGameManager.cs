@@ -18,12 +18,16 @@ public class InGameManager : MonoBehaviour
 
     // Game State
     [SerializeField] private int level = 0;
+    [SerializeField] private float secToNexLevel = 3f; // Check also RestetLevel()
+    private float currentFuelPowerUpFreq;
+    private bool isLevelUp = false;
 
     public GameObject playerPrefab;
     public Transform initPosition;
     
     // Asteroids
     [SerializeField] private int asteroidsAmmount = 8;
+    private int currentAsteroidsAmmount = 8;
     private Transform asteroidField;
     public GameObject asteroidPrefab;
 
@@ -95,6 +99,7 @@ public class InGameManager : MonoBehaviour
         {
             gameTime += Time.fixedDeltaTime;
             DrainPower();
+            HandleLevel();
         }
     }
 
@@ -119,7 +124,7 @@ public class InGameManager : MonoBehaviour
     void UpdateMovementXBoundaries()
     {
         float playerWidth = player.GetComponent<Collider2D>().bounds.size.x;
-        Debug.Log("Player Width: " + playerWidth);
+        // Debug.Log("Player Width: " + playerWidth);
         float xOffset = Camera.main.orthographicSize * Camera.main.aspect - playerWidth;
         pc.SetXBoundaries(initPosition.position.x - xOffset, initPosition.position.x + xOffset);
     }
@@ -157,7 +162,6 @@ public class InGameManager : MonoBehaviour
                 fuelPowerUpTimer = fuelPowerUpFreq;
             }
         }
-        
     }
 
     void HandleAsteroids()
@@ -166,6 +170,51 @@ public class InGameManager : MonoBehaviour
         {
             SpawnAsteroids(asteroidField.childCount);
         }
+    }
+
+    void HandleLevel()
+    {
+        // Debug.Log("GAME TIME: "+gameTime);
+        // Debug.Log((gameTime % secToNexLevel+1) + " -> " + secToNexLevel);
+        // Debug.Log("LEVEL: "+level);
+
+        if ((gameTime % secToNexLevel+1) > secToNexLevel)
+        { 
+            if(!isLevelUp)
+            {
+                isLevelUp = true;
+                IncreaseLevel();
+                // secToNexLevel += 3f;
+            }
+        }
+        else
+        {
+            if(isLevelUp)
+            {
+                isLevelUp = false;
+            }
+        }
+    }
+
+    void IncreaseLevel()
+    {
+        level++;
+        currentAsteroidsAmmount++;
+        //Increase asteroids size
+        currentFuelPowerUpFreq -= 0.1f;
+
+        Debug.Log("LEVEL UP: " + level);
+        Debug.Log("ASTEROIDS AMMOUNT: " + currentAsteroidsAmmount);
+        Debug.Log("ASTEROIDS SIZE: " + "TODO")
+        Debug.Log("FUEL POWER UP FREQ: " + currentFuelPowerUpFreq);
+    }
+
+    void ResetLevel()
+    {
+        level = 0;
+        secToNexLevel = 3f;
+        currentAsteroidsAmmount = asteroidsAmmount;
+        currentFuelPowerUpFreq = fuelPowerUpFreq;
     }
 
     void HandleGameOver(string cause)
@@ -261,9 +310,9 @@ public class InGameManager : MonoBehaviour
         shields = 3;
         power = powerMax;
         gameTime = 0;
-        level = 0;
-        asteroidsAmmount = 8;
         fuelPowerUpTimer = 0;
+
+        ResetLevel();
 
         InGameUIManager.instance.OnShieldsChanged(shields);
         InGameUIManager.instance.OnFuelChanged(power/powerMax);
